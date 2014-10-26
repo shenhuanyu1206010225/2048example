@@ -13,7 +13,7 @@ function newgame(){
     //在随机两个格子生成数字
     genNumber();
     genNumber();
-    updateBoardView();
+    
 }
 
 function init(){
@@ -26,6 +26,7 @@ function init(){
             gridCell.css('left', getPosLeft( j ) );
         }
     }
+    updateBoardView();
     
 }
 
@@ -67,9 +68,45 @@ function genNumber(){
             var ry=Math.floor(Math.random()*4)
             if (board[rx][ry]==0){
                 board[rx][ry]=rn;
-                break;
+                showNumAnitmate(rx, ry, rn)
+                return true;
             }
         }while(true)    
+    }
+    else return false;
+}
+
+
+$(document).keydown(function(event)){
+    switch(event.keyCode){
+        case 37:
+            if (moveLeft()){
+                genNumber();
+                isGameover();
+
+            };
+            break;
+        case 38:
+            if (moveUp()){
+                genNumber();
+                isGameover();
+
+            };
+            break;
+        case 39:
+            if (moveRight()){
+                genNumber();
+                isGameover();
+            };
+            break;
+        case 40
+            if (moveDown()){
+                genNumber();
+                isGameover();
+            };
+            break;
+        default:
+            break;
     }
 }
 

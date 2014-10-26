@@ -4,13 +4,13 @@ function showNumAnitmate(i, j, randNum) {
 	numCell.css("color",getNumColor( randNum ));
 	numCell.text(randNum);
 	
-	numberCell.animate({
+	numCell.animate({
 		width:"100px",
 		height:"100px",
 		top:getPosTop(i),
 		left:getPosLeft(j)
 	  },
-	  100
+	  500
 	);
 
 }
