@@ -68,7 +68,7 @@ function genNumber(){
             var ry=Math.floor(Math.random()*4)
             if (board[rx][ry]==0){
                 board[rx][ry]=rn;
-                showNumAnitmate(rx, ry, rn)
+                showNumAnimate(rx, ry, rn)
                 return true;
             }
         }while(true)    

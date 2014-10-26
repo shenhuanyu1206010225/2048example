@@ -1,4 +1,4 @@
-function showNumAnitmate(i, j, randNum) {
+function showNumAnimate(i, j, randNum) {
     var numCell=$("#number-cell-"+i+"-"+j);
 	numCell.css("background-color",getNumBackgroundColor( randNum ));
 	numCell.css("color",getNumColor( randNum ));
@@ -12,5 +12,21 @@ function showNumAnitmate(i, j, randNum) {
 	  },
 	  500
 	);
+}
 
+function showScoreAnimate(score){
+    
+	var oscoreDom=$("#score");
+	var ascoreDom=$("#oa");
+	oscoreNum=parseInt(oscoreDom.text())+score;
+
+    ascoreDom.text("+"+score);
+	ascoreDom.fadeIn(220).fadeOut(220);
+	oscoreDom.text(oscoreNum);
+}
+
+function showGameoverAnimate(){
+	var ascoreDom=$("#oa");
+	ascoreDom.text("Game Over!");
+	ascoreDom.fadeIn(1000).fadeOut(1000);
 }
