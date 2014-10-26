@@ -77,36 +77,36 @@ function genNumber(){
 }
 
 
-$(document).keydown(function(event)){
+$(document).keydown(function(event){
     switch(event.keyCode){
         case 37:
             if (moveLeft()){
                 genNumber();
-                isGameover();
+                gameover();
 
             };
             break;
         case 38:
             if (moveUp()){
                 genNumber();
-                isGameover();
+                gameover();
 
             };
             break;
         case 39:
             if (moveRight()){
                 genNumber();
-                isGameover();
+                gameover();
             };
             break;
-        case 40
+        case 40:
             if (moveDown()){
                 genNumber();
-                isGameover();
+                gameover();
             };
             break;
         default:
             break;
     }
-}
+});
 

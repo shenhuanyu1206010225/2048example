@@ -73,3 +73,49 @@ function getNumColor( num ){
 	}
 
 }
+
+
+function isGameover(){
+	for( i = 0 ; i < 4 ; i ++ ){
+        for( j = 0 ; j < 4 ; j ++ ){
+           if (board[i][j]==0)
+           		return false;
+           else if  (i<3 && board[i][j]==board[i+1][j])
+           	    return false;
+           else if  (j<3 && board[i][j]==board[i][j+1])
+           	    return false;
+        }
+    }
+    return true;
+}
+
+function gameover(){
+	if (isGameover()){
+
+	}
+
+}
+
+
+
+function moveLeft(){
+	return true;
+
+}
+
+function moveUp(){
+	return true;
+}
+
+function moveRight(){
+	return true;
+}
+
+function moveLeft(){
+	return true;
+}
+
+function moveDown(){
+	return true;
+}
+
