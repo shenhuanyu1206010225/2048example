@@ -91,7 +91,7 @@ function isGameover(){
 
 function gameover(){
 	if (isGameover()){
-
+		showGameoverAnimate();
 	}
 
 }
@@ -99,23 +99,39 @@ function gameover(){
 
 
 function moveLeft(){
-	return true;
+	var can=false;
+	for( i = 0 ; i < 4 ; i ++ ){
+        for( j = 1 ; j < 4 ; j ++ ){
+           if (board[i][j-1]==0 && board[i][j]!=0){
+           	    board[i][j-1]=board[i][j];
+           		board[i][j]=0;
+           		updateBoardView();
+           		can=true;
+           }
+ 
+        }
+    }
 
+	return can;
 }
 
 function moveUp(){
-	return true;
+	var can=false;
+	return can;
 }
 
 function moveRight(){
-	return true;
+	var can=false;
+	return can;
 }
 
 function moveLeft(){
-	return true;
+	var can=false;
+	return can;
 }
 
 function moveDown(){
-	return true;
+	var can=false;
+	return can;
 }
 
