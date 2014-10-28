@@ -80,35 +80,35 @@ function genNumber(){
 
 
 $(document).keydown(function(event){
-    // switch(event.keyCode){
-    //     case 37:
-    //         if (moveLeft()){
-    //             genNumber();
-    //             gameover();
+    switch(event.keyCode){
+        case 37:
+            if (moveLeft()){
+                genNumber();
+                gameover();
 
-    //         };
-    //         break;
-    //     case 38:
-    //         if (moveUp()){
-    //             genNumber();
-    //             gameover();
+            };
+            break;
+        case 38:
+            if (moveUp()){
+                genNumber();
+                gameover();
 
-    //         };
-    //         break;
-    //     case 39:
-    //         if (moveRight()){
-    //             genNumber();
-    //             gameover();
-    //         };
-    //         break;
-    //     case 40:
-    //         if (moveDown()){
-    //             genNumber();
-    //             gameover();
-    //         };
-    //         break;
-    //     default:
-    //         break;
-    // }
+            };
+            break;
+        case 39:
+            if (moveRight()){
+                genNumber();
+                gameover();
+            };
+            break;
+        case 40:
+            if (moveDown()){
+                genNumber();
+                gameover();
+            };
+            break;
+        default:
+            break;
+    }
 });
 

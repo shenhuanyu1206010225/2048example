@@ -74,20 +74,19 @@ function getNumColor( num ){
 
 }
 
-
 function isGameover(){
-	for( i = 0 ; i < 4 ; i ++ ){
-        for( j = 0 ; j < 4 ; j ++ ){
-           if (board[i][j]==0)
-           		return false;
-           else if  (i<3 && board[i][j]==board[i+1][j])
+	for( var i = 0 ;i < 4 ; i ++ ){
+        for( var j = 0 ; j < 4 ; j ++ ){
+        	if (board[i][j]===0)
+        		return false;
+        	else if  (i<3 && board[i][j]==board[i+1][j])
            	    return false;
-           else if  (j<3 && board[i][j]==board[i][j+1])
-           	    return false;
-        }
-    }
+           	else if  (j<3 && board[i][j]==board[i][j+1])
+           	    return false;     	
+   		};
+   	};
     return true;
-}
+};
 
 function gameover(){
 	if (isGameover()){
@@ -96,22 +95,37 @@ function gameover(){
 
 }
 
-
-
 function moveLeft(){
 	var can=false;
+	var tempArr=[];
+	var k;
 	for( i = 0 ; i < 4 ; i ++ ){
-        for( j = 1 ; j < 4 ; j ++ ){
-           if (board[i][j-1]==0 && board[i][j]!=0){
-           	    board[i][j-1]=board[i][j];
-           		board[i][j]=0;
-           		updateBoardView();
-           		can=true;
-           }
- 
+		k=0;
+		tempArr[i]=[];
+        for( j = 0 ; j < 4 ; j ++ ){
+           initAdd=false;
+           if (board[i][j]!==0){
+           		tempArr[i][k++]=board[i][j];
+           		if (initAdd && k-2>0 && tempArr[i][k-1]==tempArr[i][k-2]){
+           		    	tempArr[i][k-2]+=tempArr[i][k-2];
+           				initAdd=true;
+           		}
+           }		
+        }
+        if (tempArr[i].length>0 && board[i][4]!=0 && tempArr[i].length<3){
+        	can=true;
+        	for (j=0; j<4;j++){
+        		if (j<tempArr[i].length)
+        			board[i][j]=tempArr[i][j];
+        		else 
+        			board[i][j]=0;
+        	}
         }
     }
 
+    if (can){           
+    	updateBoardView();
+    }
 	return can;
 }
 
