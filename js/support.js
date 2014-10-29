@@ -98,34 +98,46 @@ function gameover(){
 function moveLeft(){
 	var can=false;
 	var tempArr=[];
-	var k;
-	for( i = 0 ; i < 4 ; i ++ ){
-		k=0;
+	var initAdd=false;
+	var addScore=0;
+	for(var i = 0 ; i < 4 ; i ++ ){
+		var k=0;
 		tempArr[i]=[];
-        for( j = 0 ; j < 4 ; j ++ ){
-           initAdd=false;
+		initAdd=false;
+        for(var j = 0 ; j < 4 ; j ++ ){   
            if (board[i][j]!==0){
-           		tempArr[i][k++]=board[i][j];
-           		if (initAdd && k-2>0 && tempArr[i][k-1]==tempArr[i][k-2]){
-           		    	tempArr[i][k-2]+=tempArr[i][k-2];
+           		tempArr[i][k]=board[i][j];
+           		if (!initAdd && k-1>=0 && tempArr[i][k]===tempArr[i][k-1]){
+           		    	tempArr[i][k-1]+=tempArr[i][k];
+           		    	addScore+=tempArr[i][k];
+           		    	tempArr[i].pop();
+           		    	k--;
            				initAdd=true;
            		}
-           }		
-        }
-        if (tempArr[i].length>0 && board[i][4]!=0 && tempArr[i].length<3){
-        	can=true;
-        	for (j=0; j<4;j++){
-        		if (j<tempArr[i].length)
-        			board[i][j]=tempArr[i][j];
-        		else 
-        			board[i][j]=0;
-        	}
-        }
-    }
-
+           		k++;
+           };		
+        };
+        if (tempArr[i].length>0  && tempArr[i].length<=3){
+        	for (var h=0; h<4;h++){
+        		if (h<tempArr[i].length && board[i][h]!==tempArr[i][h]){
+        			board[i][h]=tempArr[i][h];
+        			can=true;
+        		}
+        		if (h>=tempArr[i].length &&board[i][h]!==0){
+        			board[i][h]=0; 
+        			can=true;  			
+        		}
+        		else if (h>=tempArr[i].length){
+        			board[i][h]=0;		
+        		}
+        	};
+        	console.log(i+":"+tempArr[i]);
+        };
+    };
+    
     if (can){           
-    	updateBoardView();
-    }
+    	updateBoardView(addScore);
+    };
 	return can;
 }
 
@@ -135,14 +147,9 @@ function moveUp(){
 }
 
 function moveRight(){
-	var can=false;
-	return can;
+
 }
 
-function moveLeft(){
-	var can=false;
-	return can;
-}
 
 function moveDown(){
 	var can=false;

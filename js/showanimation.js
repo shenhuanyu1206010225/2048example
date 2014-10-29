@@ -21,7 +21,7 @@ function showScoreAnimate(score){
 	oscoreNum=parseInt(oscoreDom.text())+score;
 
     ascoreDom.text("+"+score);
-	ascoreDom.fadeIn(220).fadeOut(220);
+	ascoreDom.fadeIn(300).fadeOut(220);
 	oscoreDom.text(oscoreNum);
 }
 

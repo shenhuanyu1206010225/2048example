@@ -3,11 +3,11 @@ var score = 0;
 var gridCell;
 var i, j;
 
-$(document).ready(function(){
+$(document).ready(function () {
     newgame();
 });
 
-function newgame(){
+function newgame() {
     //初始化棋盘格
     init();
     //在随机两个格子生成数字
@@ -17,13 +17,13 @@ function newgame(){
 }
 
 function init(){
-    for( i = 0 ; i < 4 ; i ++ ){
+    for( i = 0; i < 4; i ++){
         board[i]=[];
-        for( j = 0 ; j < 4 ; j ++ ){
+        for( j = 0; j < 4; j ++){
             board[i][j]=0;
             gridCell = $('#grid-cell-'+i+"-"+j);
-            gridCell.css('top', getPosTop( i ) );
-            gridCell.css('left', getPosLeft( j ) );
+            gridCell.css('top', getPosTop(i) );
+            gridCell.css('left', getPosLeft(j) );
         }
     }
     $("#score").text("0");
@@ -33,7 +33,7 @@ function init(){
 }
 
 
-function updateBoardView(){
+function updateBoardView(addscore){
     $(".number-cell").remove();
     gcont=$("#grid-container");
     for( i = 0 ; i < 4 ; i ++ ){
@@ -58,6 +58,10 @@ function updateBoardView(){
             }     
         }
     }
+    if (addscore){
+        showScoreAnimate(addscore);
+    };
+
 }
 
 
@@ -85,7 +89,6 @@ $(document).keydown(function(event){
             if (moveLeft()){
                 genNumber();
                 gameover();
-
             };
             break;
         case 38:
