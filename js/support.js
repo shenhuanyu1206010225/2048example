@@ -147,7 +147,26 @@ function moveUp(){
 }
 
 function moveRight(){
+	var can=false;
+	var tempArr=[];
+	var initAdd=false;
+	var addScore=0;
+	var len=board[0].length;
+	for(var i = 0 ; i < len ; i ++ ){
+		tempArr=board[i].filter(function(intem,index,array){
+			return (item>0);
+		});
+		if (tempArr.length>0 && tempArr.length<len){
+			for(var k=0,j=len;j>=0;j--){
 
+
+			};
+		};
+	}
+	if (can){           
+    	updateBoardView(addScore);
+    };
+	return can;
 }
 
 
