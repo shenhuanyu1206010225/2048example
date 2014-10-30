@@ -1,11 +1,14 @@
+// 计算相对底部容器顶部间距
 function getPosTop(i){
     return 20 + i*120;
 }
 
+// 计算相对底部容器左边间距
 function getPosLeft(j){
     return 20 + j *120;
 }
 
+// 判断是否存在空间生成数字
 function noSpace(board){   
     for (var i=0;i<board.length;i++){
     	for (var j=0;j<board[i].length;j++){
@@ -16,6 +19,7 @@ function noSpace(board){
     return true;
 }
 
+// 生成背景颜色
 function getNumBackgroundColor( num ){
 	var bg;
 	switch(num){
@@ -64,6 +68,7 @@ function getNumBackgroundColor( num ){
 	return bg;
 }
 
+// 生成数字颜色
 function getNumColor( num ){
 	if (num<=4){
 		return "#776e65";
@@ -74,6 +79,7 @@ function getNumColor( num ){
 
 }
 
+// 判断游戏是否结束
 function isGameover(){
 	for( var i = 0 ;i < 4 ; i ++ ){
         for( var j = 0 ; j < 4 ; j ++ ){
@@ -88,6 +94,7 @@ function isGameover(){
     return true;
 };
 
+// 游戏结束操作
 function gameover(){
 	if (isGameover()){
 		showGameoverAnimate();
@@ -95,6 +102,7 @@ function gameover(){
 
 }
 
+// 棋盘格向左移动发生的操作
 function moveLeft(){
 	var can=false;
 	var tempArr=[];
@@ -153,6 +161,7 @@ function moveLeft(){
 	return can;
 }
 
+// 棋盘格向上移动发生的操作
 function moveUp(){
 	var can=false;
 	var tempArr=[];
@@ -200,6 +209,7 @@ function moveUp(){
 	return can;
 }
 
+// 棋盘格向右移动发生的操作
 function moveRight(){
 	var can=false;
 	var tempArr=[];
@@ -257,7 +267,7 @@ function moveRight(){
 	return can;
 }
 
-
+// 棋盘格向下移动发生的操作
 function moveDown(){
 	var can=false;
 	var tempArr,tempArr2=[];

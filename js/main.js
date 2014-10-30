@@ -1,12 +1,16 @@
+//二维数组，存储游戏数字
 var board = [];
+// 存储得分
 var score = 0;
 var gridCell;
 var i, j;
 
+// DOM就绪后执行newgame函数
 $(document).ready(function () {
     newgame();
 });
 
+// 先开始一个游戏
 function newgame() {
     //初始化棋盘格
     init();
@@ -16,6 +20,7 @@ function newgame() {
     
 }
 
+// 初始化棋盘格
 function init(){
     for( i = 0; i < 4; i ++){
         board[i]=[];
@@ -33,6 +38,7 @@ function init(){
 }
 
 
+// 更新棋盘格，显示数字
 function updateBoardView(addscore){
     $(".number-cell").remove();
     gcont=$("#grid-container");
@@ -65,7 +71,7 @@ function updateBoardView(addscore){
 }
 
 
-
+//生成2或4的数字，并显示相应动画
 function genNumber(){
     if(!noSpace(board)){
         var rn=Math.random()>=0.5?2:4;
@@ -83,6 +89,7 @@ function genNumber(){
 }
 
 
+// 监听左上右下光标键，按键后执行相应操作
 $(document).keydown(function(event){
     switch(event.keyCode){
         case 37:
