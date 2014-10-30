@@ -155,6 +155,48 @@ function moveLeft(){
 
 function moveUp(){
 	var can=false;
+	var tempArr=[];
+	var initAdd=false;
+	var addScore=0;
+	for(var j = 0 ; j< 4 ; j ++ ){
+		var k=0;
+		tempArr=[];
+		initAdd=false;
+        for(var i = 0 ; i < 4 ; i ++ ){   
+           if (board[i][j]!==0){
+           		tempArr[k]=board[i][j];
+           		if (!initAdd && k-1>=0 && tempArr[k]===tempArr[k-1]){
+           		    	tempArr[k-1]+=tempArr[k];
+           		    	addScore+=tempArr[k];
+           		    	tempArr.pop();
+           		    	k--;
+           				initAdd=true;
+           		}
+           		k++;
+           };		
+        };
+        if (tempArr.length>0  && tempArr.length<=3){
+        	for (var h=0; h<4;h++){
+        		if (h<tempArr.length){
+        			if (board[h][j]!==tempArr[h]){
+        				board[h][j]=tempArr[h];
+        				can=true;
+        			}
+        		}
+        		else if (board[h][j]!==0){
+        			//can=true;
+        			board[h][j]=0;
+        		}
+        		else{
+        			board[h][j]=0;
+        		}
+        	};
+        };
+    };
+    
+    if (can){           
+    	updateBoardView(addScore);
+    };
 	return can;
 }
 
@@ -178,6 +220,7 @@ function moveRight(){
                     can=true;
                     tempArr.shift();
                     tempArr.unshift(prev*2);
+                    initAdd=true;
     			}
     			else {
     				tempArr.unshift(curv);
@@ -217,6 +260,54 @@ function moveRight(){
 
 function moveDown(){
 	var can=false;
+	var tempArr,tempArr2=[];
+	var initAdd=false;
+	var addScore=0;
+	var len=board.length;
+	for(var j = 0 ; j < len ;  j++ ){
+		initAdd=false;
+        tempArr2=[board[0][j],board[1][j],board[2][j],board[3][j]];
+        tempArr=[];
+		tempArr2.reduceRight(function(prev,curv){
+    		if (curv!=0){
+    			if (!initAdd && prev === curv){
+                    addScore+=curv;
+                    can=true;
+                    tempArr.shift();
+                    tempArr.unshift(prev*2);
+                    initAdd=true;
+    			}
+    			else {
+    				tempArr.unshift(curv);
+    			}
+    		}
+    		else
+    			curv=prev;
+   			return curv;
+		},0);
+
+
+		if (tempArr.length>0 && tempArr.length<len){
+			for(var k=tempArr.length-1,i=len-1;i>=0;i--,k--){
+				if (k>=0){
+					if (board[i][j]!==tempArr[k]){
+						can=true;
+						board[i][j]=tempArr[k];
+					}
+				}
+				else if (board[i][j]!=0){
+					can=true;
+					board[i][j]=0;
+				}
+				else{
+        			board[i][j]=0;
+        		}
+			};
+		};
+	}
+	if (can){           
+    	updateBoardView(addScore);
+    };
 	return can;
 }
 

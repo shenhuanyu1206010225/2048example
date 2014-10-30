@@ -10,7 +10,7 @@ function showNumAnimate(i, j, randNum) {
 		top:getPosTop(i),
 		left:getPosLeft(j)
 	  },
-	  500
+	  600
 	);
 }
 
@@ -21,12 +21,12 @@ function showScoreAnimate(score){
 	oscoreNum=parseInt(oscoreDom.text())+score;
 
     ascoreDom.text("+"+score);
-	ascoreDom.fadeIn(300).fadeOut(220);
+	ascoreDom.fadeIn(300).fadeOut(300);
 	oscoreDom.text(oscoreNum);
 }
 
 function showGameoverAnimate(){
 	var ascoreDom=$("#oa");
 	ascoreDom.text("Game Over!");
-	ascoreDom.fadeIn(1000).fadeOut(1000);
+	ascoreDom.fadeIn(1000).fadeOut(3000);
 }
